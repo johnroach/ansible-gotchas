@@ -13,7 +13,3 @@
                     templates
             playbooks
             hosts_one
-
-    Gotchas:
-
-        - Roles run before tasks
