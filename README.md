@@ -13,3 +13,8 @@
                     templates
             playbooks
             hosts_one
+
+2. Move roles before task.
+
+    Gotchas:
+        - Roles run before tasks
