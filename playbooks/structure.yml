@@ -1,0 +1,15 @@
+---
+- name: This playbook shows structure
+  hosts: ansible-tester0
+  pre_tasks:
+    - name: This is a pre task
+      shell: "echo 'This command runs first'"
+
+  roles:
+    - { role: structure }
+
+  tasks:
+    - name: This is a task
+      shell: "echo 'This runs second'"
+
+    - include: includeme.yml

@@ -1,0 +1,51 @@
+current_app_name = "{{ item.msname }}"
+deployed_version = "{{ item.version }}"
+server_name = "{{ item.msname }}"
+weblogic_password = "{{ oc_atg_app_deploy_deploy_weblogic_password }}"
+weblogic_username = "{{ oc_atg_app_deploy_deploy_weblogic_username }}"
+
+if deployed_version.strip():
+    exploded_ear_path = "{{ oc_atg_app_deploy_deploy_root }}/product/atg/deployments/{{ item.msname }}/{{ item.version }}/{{ item.msname }}.ear"
+else:
+    exploded_ear_path = "{{ oc_atg_app_deploy_deploy_root }}/product/atg/deployments/{{ item.msname }}/{{ item.msname }}.ear"
+    deployed_version = None
+
+current_app_name = "{{ item.msname }}"
+java_args = "{{ item.javaargs }}"
+staging_mode = "{{ item.staging_mode }}"
+
+connect(weblogic_username, weblogic_password)
+
+try:
+    shutdown(server_name, "Server")
+except:
+    print(server_name + " server could not shutdown.")
+
+edit()
+startEdit()
+cd("Servers/" + server_name + "/ServerStart/" + server_name)
+set("Arguments", java_args)
+validate()
+save()
+activate(200000, block="true")
+
+try:
+    start(server_name, "Server")
+except:
+    shutdown(server_name, "Server")
+    start(server_name, "Server")
+
+progress = deploy(current_app_name, exploded_ear_path,
+                  stageMode=staging_mode, targets=server_name,
+                  timeout=6000000,
+                  versionIdentifier=deployed_version)
+
+progress.printStatus()
+
+start_application_progress = \
+    startApplication(current_app_name, stageMode=staging_mode,
+                     adminMode="false")
+
+start_application_progress.printStatus()
+
+exit()

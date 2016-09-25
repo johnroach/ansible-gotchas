@@ -1,0 +1,3 @@
+---
+- name: This is a role! from structure role
+  shell: "echo 'Running a role'"
