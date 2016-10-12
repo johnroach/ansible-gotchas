@@ -25,6 +25,7 @@
 
     Notes:
         - Checkout the following:
+        ```
             group_vars
             roles
                 structure
@@ -34,10 +35,19 @@
                     templates
             playbooks
             hosts_one
-
+        ```
 2. Move roles before task.
-
+    ```
+        ansible-playbook -i hosts_one playbooks/structure.yml -v
+    ```
     Gotchas:
         - Roles run before tasks
 
-3. ...
+3. Hosts and host groups
+    ```
+        ansible-playbook -i hosts_one playbooks/hosts.yml -v
+        ansible-playbook -i hosts.d playbooks/hosts.yml -v
+    ```
+    Gotchas:
+        - If using directory for hosts naming of host files are important. Example: change allhosts to zhosts
+        - Just because you specified hosts in a sequence doesn't mean runs will be in a sequence

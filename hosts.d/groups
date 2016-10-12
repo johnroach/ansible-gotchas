@@ -1,0 +1,10 @@
+[all-hosts:children]
+even-hosts
+odd-hosts
+
+[even-hosts:children]
+ansible-tester0
+ansible-tester2
+
+[odd-hosts:children]
+ansible-tester1
