@@ -1,0 +1,13 @@
+---
+- name: Doing tasks for host group ansible-tester0
+  hosts: ansible-tester0
+  gather_facts: no
+  vars:
+    this_is_a_variable: "Hello!"
+  tasks:
+    - name: Get hostname
+      shell: "hostname"
+    - name: Print Hello World
+      shell: "echo {{ this_is_a_variable }} World"
+    - name: Use undefined variable
+      shell: "echo {{ undefined_variable | default('Hello World') }}"

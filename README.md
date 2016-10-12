@@ -41,6 +41,7 @@
         ansible-playbook -i hosts_one playbooks/structure.yml -v
     ```
     Gotchas:
+
         - Roles run before tasks
 
 3. Hosts and host groups
@@ -50,6 +51,12 @@
         ansible-playbook playbooks/hosts.yml -v
     ```
     Gotchas:
+
         - If using directory for hosts naming of host files are important. Example: change allhosts to zhosts
         - Just because you specified hosts in a sequence doesn't mean runs will be in a sequence
         - Specify your hosts file otherwise be ready to get the unexpected (i.e. /etc/ansible/hosts might get picked up!)
+
+4. Variables
+    ```
+       ansible-playbook -i hosts.d playbooks/variables.yml -v
+    ```
