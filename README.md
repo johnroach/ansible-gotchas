@@ -61,7 +61,9 @@
        ansible-playbook -i hosts.d playbooks/variables.yml -v
     ```
     Gotchas:
+
         - Ansible variable priority, its a thing!
+
 
         ```
             1.x, the precedence is as follows (with the last listed variables winning prioritization):
@@ -93,5 +95,6 @@
             task vars (only for the task)
             extra vars (always win precedence)
         ```
+
 
         - Variables can also be overwritten by roles if you are not careful. A good way around this is to use role name when defining variables.
