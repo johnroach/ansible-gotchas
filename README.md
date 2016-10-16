@@ -12,7 +12,7 @@
 - Roles structure
 - Playbook structure
 - Playbook vs Role
-- Host files (Parents, Children and Dynamic hosts)
+- Host files (Parents and children)
 - Variables and their scopes
 - Roles and dependencies
 - Templates
@@ -60,3 +60,35 @@
     ```
        ansible-playbook -i hosts.d playbooks/variables.yml -v
     ```
+    Gotchas:
+        - Ansible variable priority, its a thing!
+        ```
+            1.x, the precedence is as follows (with the last listed variables winning prioritization):
+            “role defaults”, which lose in priority to everything and are the most easily overridden
+            variables defined in inventory
+            facts discovered about a system
+            “most everything else” (command line switches, vars in play, included vars, role vars, etc.)
+            connection variables (ansible_user, etc.)
+            extra vars (-e in the command line) always win
+        ```
+
+        ```
+            In 2.x, we have made the order of precedence more specific (with the last listed variables winning prioritization):
+
+            role defaults
+            inventory vars
+            inventory group_vars
+            inventory host_vars
+            playbook group_vars
+            playbook host_vars
+            host facts
+            play vars
+            play vars_prompt
+            play vars_files
+            registered vars
+            set_facts
+            role and include vars
+            block vars (only for tasks in block)
+            task vars (only for the task)
+            extra vars (always win precedence)
+        ```
