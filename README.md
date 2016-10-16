@@ -93,3 +93,5 @@
             task vars (only for the task)
             extra vars (always win precedence)
         ```
+
+        - Variables can also be overwritten by roles if you are not careful. A good way around this is to use role name when defining variables.
