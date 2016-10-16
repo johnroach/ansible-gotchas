@@ -62,6 +62,7 @@
     ```
     Gotchas:
         - Ansible variable priority, its a thing!
+
         ```
             1.x, the precedence is as follows (with the last listed variables winning prioritization):
             “role defaults”, which lose in priority to everything and are the most easily overridden
