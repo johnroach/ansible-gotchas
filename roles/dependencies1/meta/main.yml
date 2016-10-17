@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: John Roach
+  description: This is just to show dependencies1
+  license:
+  min_ansible_version: 2.1
+  platforms:
+  - name: GenericLinux
+    versions:
+    - all
+    - any
+  categories:
+  - development
+  - deployment
+dependencies:
+  - { role: dependencies2 }

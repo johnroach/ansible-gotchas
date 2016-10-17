@@ -1,0 +1,11 @@
+---
+- name: Doing tasks for host group ansible-tester0
+  hosts: ansible-tester0
+  roles:
+    - role: dependencies1
+    - role: dependencies2
+
+- name: Doing tasks for host group ansible-tester0
+  hosts: ansible-tester0
+  roles:
+    - role: dependencies2

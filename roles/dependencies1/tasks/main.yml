@@ -1,0 +1,4 @@
+---
+- name: Show me a variable
+  debug:
+    msg: "I am dependency 1"

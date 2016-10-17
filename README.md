@@ -17,7 +17,15 @@
 - Roles and dependencies
 - Templates
 - Conditionals
-- Tools: ansible-linter
+- Tools:
+    ansible-linter
+    ansible-galaxy
+    ansible-playbook --syntax-check
+    ansible-playbook --list-hosts
+    ansible-playbook --list-tasks
+    ansible-playbook --list-tags
+    ansible-playbook --step
+    ansible-playbook --diff <-- awesome for templates
 
 ## Demonstration
 
@@ -98,3 +106,16 @@
 
 
         - Variables can also be overwritten by roles if you are not careful. A good way around this is to use role name when defining variables.
+
+5. Creating a role is pretty easy. Simply use ansible-galaxy tool like so:
+
+    ansible-galaxy init roles/dependencies01
+
+It is pretty awesome that they already have a tool for this. Simply fill in the blanks and have fun!
+Run the following line for this exercies:
+
+    ansible-playbook playbooks/dependencies.yml -v
+
+    Gotcha:
+
+    - Although it is cool to trust dependencies you must remember that if you are doing multiple plays in a single playbook your role might run twice.
