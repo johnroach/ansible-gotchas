@@ -112,7 +112,7 @@
     ansible-galaxy init roles/dependencies01
 
 It is pretty awesome that they already have a tool for this. Simply fill in the blanks and have fun!
-Run the following line for this exercies:
+Run the following line for this exercises:
 
     ansible-playbook playbooks/dependencies.yml -v
 
